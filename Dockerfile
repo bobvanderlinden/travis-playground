@@ -1,8 +1,8 @@
 FROM armv7/armhf-debian
 MAINTAINER Bob van der Linden <bobvanderlinden@gmail.com>
 
-COPY qemu-arm-static /usr/local/bin/qemu-arm-static
-COPY qemu-armeb-static /usr/local/bin/qemu-armeb-static
+COPY qemu-arm-static /usr/bin/qemu-arm-static
+COPY qemu-armeb-static /usr/bin/qemu-armeb-static
 
 
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 73571BB9 && \

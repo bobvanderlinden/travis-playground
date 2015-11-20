@@ -4,7 +4,7 @@ services:
 - docker
 
 before_install:
-- sudo bash -ex ./.travis.before_install.sh
+- sudo bash -ex ./.travis.setup_binfmt_misc.sh
 
 script:
 - docker build .
