@@ -2,8 +2,6 @@ sudo: required
 
 language: cpp
 
-install: make get-deps
-
 # compiler:
 #   - gcc
 #   - clang
