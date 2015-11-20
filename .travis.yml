@@ -6,6 +6,7 @@ services:
 before_install:
 - sudo bash -ex ./.travis.setup_binfmt_misc.sh
 - git clone --depth 1 git://github.com/machinekit/machinekit.git
+- docker pull bobvanderlinden/machinekit-build-debian-armhf
 
 script:
-- docker build .
+- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-armhf /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
