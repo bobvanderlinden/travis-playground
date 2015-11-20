@@ -1,14 +1,10 @@
 sudo: required
 
-language: cpp
+services:
+- docker
 
-# compiler:
-#   - gcc
-#   - clang
-
-env:
-  - ARCH=x64
-  - ARCH=arm
+before_install:
+- sudo bash -ex ./.travis.before_install.sh
 
 script:
-  - "bash -ex .travis-ci.sh"
+- docker build .
