@@ -1,0 +1,16 @@
+sudo: required
+
+language: cpp
+
+install: make get-deps
+
+# compiler:
+#   - gcc
+#   - clang
+
+env:
+  - ARCH=x64
+  - ARCH=arm
+
+script:
+  - "bash -ex .travis-ci.sh"
