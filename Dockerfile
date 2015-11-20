@@ -3,6 +3,7 @@ MAINTAINER Bob van der Linden <bobvanderlinden@gmail.com>
 
 COPY qemu-arm-static /usr/bin/qemu-arm-static
 COPY qemu-armeb-static /usr/bin/qemu-armeb-static
+COPY machinekit /usr/src/
 
 
 RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 73571BB9 && \
@@ -19,12 +20,7 @@ RUN apt-key adv --keyserver hkp://keys.gnupg.net --recv-key 73571BB9 && \
         lsb-release && \
     apt-get install -y -t wheezy-backports cython
 
-WORKDIR /usr/src
-RUN git clone --depth 1 git://github.com/machinekit/machinekit.git
-
-WORKDIR machinekit
-RUN ./debian/configure -prx \
-        -X 3.8-1-xenomai.x86-amd64 \
-        -R 3.8-1-rtai.x86-amd64 && \
+WORKDIR /usr/src/machinekit
+RUN ./debian/configure -prx && \
     yes | mk-build-deps -i -r && \
     debuild -eDEB_BUILD_OPTIONS="parallel=4" -us -uc -b -j4
