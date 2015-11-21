@@ -14,4 +14,4 @@ env:
 - ARCH=x86_64 CODENAME=wheezy
 
 script:
-- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build:${CODENAME}-${ARCH} /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -ir && cd src && ./autogen.sh && ./configure && make && make setuid"
+- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build:${CODENAME}-${ARCH} /bin/bash -c "apt-get update && cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -ir && cd src && ./autogen.sh && ./configure && make && make setuid"
