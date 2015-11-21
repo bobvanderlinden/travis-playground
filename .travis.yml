@@ -10,5 +10,9 @@ install:
 - git clone --depth 1 git://github.com/machinekit/machinekit.git
 - docker pull bobvanderlinden/machinekit-build-debian-armhf
 
+env
+- ARCH=arm
+- ARCH=x86_64
+
 script:
-- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-armhf:wheezy /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
+- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-$ARCH:wheezy /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
