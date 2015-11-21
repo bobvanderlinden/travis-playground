@@ -3,7 +3,7 @@ sudo: required
 services:
 - docker
 
-before_install:
+install:
 - sudo bash -ex ./.travis.setup_binfmt_misc.sh
 - git clone --depth 1 git://github.com/machinekit/machinekit.git
 - docker pull bobvanderlinden/machinekit-build-debian-armhf
