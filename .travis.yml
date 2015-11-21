@@ -11,7 +11,7 @@ install:
 - docker pull bobvanderlinden/machinekit-build-debian-armhf
 
 env:
-- ARCH=arm
+- ARCH=armhf
 - ARCH=x86_64
 
 script:
