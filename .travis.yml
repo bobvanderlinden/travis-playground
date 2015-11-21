@@ -11,8 +11,8 @@ install:
 - docker pull bobvanderlinden/machinekit-build-debian-armhf
 
 env:
-- ARCH=armhf
-- ARCH=x86_64
+- ARCH=armhf CODENAME=wheezy
+- ARCH=x86_64 CODENAME=wheezy
 
 script:
-- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-$ARCH:wheezy /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
+- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build:${CODENAME}-${ARCH} /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
