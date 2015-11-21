@@ -9,4 +9,4 @@ install:
 - docker pull bobvanderlinden/machinekit-build-debian-armhf
 
 script:
-- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-armhf /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
+- docker run -v $(pwd)/machinekit:/usr/src/machinekit bobvanderlinden/machinekit-build-debian-armhf:wheezy /bin/bash -c "cd /usr/src/machinekit && debian/configure -p && yes | mk-build-deps -i -r && debuild"
